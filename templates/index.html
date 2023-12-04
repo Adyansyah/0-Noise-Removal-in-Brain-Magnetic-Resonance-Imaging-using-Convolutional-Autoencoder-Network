@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contoh Website</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.0/css/bootstrap.min.css"
+    />
+    <link href="./static/css/styles.css" rel="stylesheet"> </link>
+  </head>
+
+  <body>
+    <div class="container-mid">
+      <div class="centered">
+        <div class="title">
+          <h2>
+            Penghapusan Derau Pada Citra Magnetic Resonance Imaging(MRI) Otak
+          </h2>
+          <h3>Menggunakan Convoutional Autoencoder Network</h3>
+        </div>
+        <form
+          id="myForm"
+          method="POST"
+          action="/index"
+          enctype="multipart/form-data"
+        >
+          <div class="mb-2">
+            {% if get_flashed_messages() == [] %}
+            <p style="margin-top: 20px" id="pesanSingkat">
+              Harap pilih file dengan format .jpg, .jpeg, atau .png.
+            </p>
+            {% endif %} {% for message in get_flashed_messages() %}
+            <p style="margin-top: 20px" class="error-message" id="pesanSingkat">
+              {{ message }}
+            </p>
+            {% endfor %}
+          </div>
+          <div class="mb-3">
+            <input type="file" name="file" id="imageInput" />
+          </div>
+          <div class="mb-3 d-flex justify-content-center">
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="option"
+                id="option1"
+                value="1"
+                onclick="showInputs()"
+              />
+              <label class="form-check-label" for="option1"
+                >Gaussian Noise</label
+              >
+            </div>
+            <div class="form-check form-check-inline">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="option"
+                id="option2"
+                value="2"
+                onclick="showInputs()"
+              />
+              <label class="form-check-label" for="option2"
+                >Rayleigh Noise</label
+              >
+            </div>
+          </div>
+          <div class="mb-3" id="input-container" style="display: none">
+            <div class="row justify-content-center">
+              <div class="col-auto">
+                <label for="input1" class="form-label">Mean:</label>
+                <input
+                  type="number"
+                  id="input1"
+                  name="mean"
+                  class="form-control"
+                  step="0.1"
+                  min="0"
+                  placeholder="Input 1"
+                  value="0"
+                />
+              </div>
+              <div class="col-auto" id="input2-container" style="display: none">
+                <label for="input2" class="form-label"
+                  >Standard Deviation:</label
+                >
+                <input
+                  type="number"
+                  id="input2"
+                  name="sd"
+                  class="form-control"
+                  step="0.1"
+                  min="0"
+                  placeholder="Input 2"
+                  value="0"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="mb-3"><button type="submit">Submit</button></div>
+        </form>
+        {% if temp is defined %}
+        <hr>
+        <div class="d-flex justify-content-center mt-4">
+          <div>
+            <h3>Hasil :</h3>
+            <div class="image-wrapper">
+              <figure>
+                <img src="./static/img/{{temp['filename1']}}" alt="Input" />
+                <figcaption>{{ temp['filename1']}}</figcaption>
+              </figure>
+              <figure>
+                <img src="./static/img/{{temp['filename2']}}" alt="Noisy" />
+                <figcaption>{{ temp['tipe'] }}</figcaption>
+              </figure>
+              <figure>
+                <img src="./static/img/{{temp['filename3']}}" alt="Denoised" />
+                <figcaption>Denoised</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+        <div class="mb-3">
+          <div class="d-flex justify-content-center mt-4">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Nilai</th>
+                  <th scope="col">Sebelum</th>
+                  <th scope="col">Setelah</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">PSNR</th>
+                  <td>{{temp['bpsnr']}}</td>
+                  <td>{{temp['apsnr']}}</td>
+                </tr>
+                <tr>
+                  <th scope="row">SSIM</th>
+                  <td>{{temp['bssim']}}</td>
+                  <td>{{temp['assim']}}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+      </div>
+    </div>
+    {% endif %}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+      function showInputs() {
+        var inputContainer = document.getElementById("input-container");
+        var input2Container = document.getElementById("input2-container");
+        var pilihan1Radio = document.getElementById("option1");
+
+        if (pilihan1Radio.checked) {
+          inputContainer.style.display = "block";
+          input2Container.style.display = "block";
+        } else {
+          inputContainer.style.display = "block";
+          input2Container.style.display = "none";
+        }
+      }
+      if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+      }
+    </script>
+  </body>
+</html>

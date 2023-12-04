@@ -1,0 +1,94 @@
+body {
+  padding: 20px;
+  background: #00cc7a;
+}
+
+input {
+  border-radius: 7px;
+  border: 2px;
+  border-style: solid;
+}
+
+input::file-selector-button {
+  padding: 7px;
+  border: none;
+  border-radius: 7px;
+  background-color: #33ff77;
+}
+
+button {
+  background-color: #33ff77;
+  shadow: 0 0 1px;
+  border-radius: 7px;
+  padding: 7px;
+}
+
+.container-mid {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: auto;
+  width: 70%;
+  min-width: 700px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.centered {
+  text-align: center;
+  background: #fff;
+  padding: 20px;
+  border-radius: 7px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.image-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.image-wrapper figure {
+  text-align: center;
+}
+
+.image-wrapper img {
+  max-width: 100%;
+}
+
+.image-wrapper figcaption {
+  margin-top: 10px;
+}
+
+.title {
+  margin: 10px;
+  padding: 5px;
+}
+
+.error-message {
+  color: red;
+}
+
+.textContainer {
+  margin: 0px;
+  font-size: 20px;
+}
+
+img {
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  max-width: 224px;
+  max-height: 224px;
+}
+table {
+  max-width: 450px;
+}
+td {
+  font-size: 15px;
+}
+hr {
+  border: solid 3px;
+}
