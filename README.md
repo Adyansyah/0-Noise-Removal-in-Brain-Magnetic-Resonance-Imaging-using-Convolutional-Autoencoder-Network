@@ -6,9 +6,11 @@ Magnetic resonance imaging (MRI) images often contain noise, for example in brai
 
 ## Screenshot
 Start / Before Submit Form
+
 ![image](https://github.com/Adyansyah/0-Noise-Removal-in-Brain-Magnetic-Resonance-Imaging-using-Convolutional-Autoencoder-Network/assets/89564230/6719fc34-3702-4271-bc0f-283383a8cef9)
 
 After Submit Form
+
 ![image](https://github.com/Adyansyah/0-Noise-Removal-in-Brain-Magnetic-Resonance-Imaging-using-Convolutional-Autoencoder-Network/assets/89564230/a1d18f16-6e76-4f32-9c97-85385218d334)
 
 ## Result Table
